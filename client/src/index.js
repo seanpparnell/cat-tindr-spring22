@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { initMiddleware } from 'devise-axios';
-import 'materialize-css';
 import AuthProvider from './providers/AuthProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 initMiddleware()
 

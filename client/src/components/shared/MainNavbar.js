@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const MainNavbar = ({ user, handleLogout }) => {
   
@@ -8,30 +9,30 @@ const MainNavbar = ({ user, handleLogout }) => {
       // this is links where you see once login in
       return (
         <>
-          <Link to='/cats'>
-            <li>
+          <Nav.Link>
+            <Link to='/cats'>
               Cats
-            </li>
-          </Link>
-          <li onClick={() => handleLogout()}>
+            </Link>
+          </Nav.Link>
+          <Nav.Link onClick={() => handleLogout()}>
             Logout
-          </li>
+          </Nav.Link>
         </>
       )
     } else {
       // link show when not logged in
       return (
         <>
-          <Link to='/login'>
-            <li>
+          <Nav.Link>
+            <Link to='/login'>
               Login
-            </li>
-          </Link>
-          <Link to='/register'>
-            <li>
-              SignUp
-            </li>
-          </Link>
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to='/register'>
+              Sign Up
+            </Link>
+          </Nav.Link>
         </>
       )
     }
@@ -39,15 +40,21 @@ const MainNavbar = ({ user, handleLogout }) => {
   
   return (
     <>
-      <nav>
-        <ul>
-          {/* Links that show up regardless of login or not */}
-          <Link to='/'>
-            Home
-          </Link>
-          { rightNavItem() }
-        </ul>
-      </nav>
+      <Navbar collapseOnSelect expand="lg">
+        <Container>
+          <Link to='/'><Navbar.Brand>CatCafe</Navbar.Brand></Link>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+            </Nav>
+            <Nav>
+              
+              {/* Links that show up regardless of login or not */}
+              { rightNavItem() }
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   )
 }
