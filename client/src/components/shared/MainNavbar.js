@@ -14,6 +14,11 @@ const MainNavbar = ({ user, handleLogout }) => {
               Cats
             </Link>
           </Nav.Link>
+          <Nav.Link>
+            <Link to='/randomCats'>
+              Random Cats
+            </Link>
+          </Nav.Link>
           <Nav.Link onClick={() => handleLogout()}>
             Logout
           </Nav.Link>
@@ -48,7 +53,6 @@ const MainNavbar = ({ user, handleLogout }) => {
             <Nav className="me-auto">
             </Nav>
             <Nav>
-              
               {/* Links that show up regardless of login or not */}
               { rightNavItem() }
             </Nav>

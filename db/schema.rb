@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_024329) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_31_022110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cats", force: :cascade do |t|
+    t.string "name"
+    t.string "breed"
+    t.string "registry"
+    t.string "avatar"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cats_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "subject"
+    t.text "body"
+    t.datetime "note_date"
+    t.datetime "note_time"
+    t.bigint "cat_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cat_id"], name: "index_notes_on_cat_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -47,4 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_024329) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "cats", "users"
+  add_foreign_key "notes", "cats"
 end

@@ -29,6 +29,8 @@ const Home = () => (
         </Col>
       </Row>
     </Container>
+
+    
     <h3>FAQ</h3>
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
