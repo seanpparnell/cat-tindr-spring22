@@ -19,6 +19,12 @@ const MainNavbar = ({ user, handleLogout }) => {
               Random Cats
             </Link>
           </Nav.Link>
+          <Nav.Link>
+            <Link to='/profile'>
+              Profile
+              {/* <img src={user.image} /> */}
+            </Link>
+          </Nav.Link>
           <Nav.Link onClick={() => handleLogout()}>
             Logout
           </Nav.Link>
